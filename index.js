@@ -9,7 +9,7 @@ const btnHtmlCopiar = document.querySelector(".btn-copiar");
 // 'La letra "u" es convertida para "ufat"'
 
 const matrixCode = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"]];
-const invalidCharRegex = new RegExp(/[^a-zA-ZñÑ\s.,¿?¡!]/);
+const invalidCharRegex = new RegExp(/[^a-zA-ZñÑ\s]/);
 
 function encriptar(stringEncriptado) {
 
