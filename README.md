@@ -1,7 +1,5 @@
 # Challenge-Encriptador-Alura
 
-# Encriptador de Texto
-
 Este proyecto es una aplicación web que encripta y desencripta textos según un sistema de sustitución de caracteres. 
 
 ## Clave de Encriptación
