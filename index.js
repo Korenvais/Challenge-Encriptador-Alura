@@ -9,6 +9,7 @@ const btnHtmlCopiar = document.querySelector(".btn-copiar");
 // 'La letra "u" es convertida para "ufat"'
 
 const matrixCode = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"]];
+const invalidCharRegex = new RegExp(/[^a-zA-ZñÑ\s.,¿?¡!]/);
 
 function encriptar(stringEncriptado) {
 
@@ -46,15 +47,26 @@ function postAction(){
 }
 
 function btnEncriptar(){
-    const textoEncriptado = encriptar(textArea.value)
-    mensaje.value =  textoEncriptado
-    postAction()
+
+    if (checkValidInput(textArea.value)){
+        const textoEncriptado = encriptar(textArea.value)
+        mensaje.value =  textoEncriptado
+        postAction()
+    }
+    else{
+        actionInvalidInput();
+    }
 }
 
 function btnDesencriptar(){
-    const textDesencriptado = desencriptar(textArea.value)
-    mensaje.value =  textDesencriptado
-    postAction()
+    if (checkValidInput(textArea.value)){
+        const textDesencriptado = desencriptar(textArea.value)
+        mensaje.value =  textDesencriptado
+        postAction()
+    }
+    else{
+        actionInvalidInput();
+    }
 }
 
 
@@ -64,4 +76,18 @@ function btnCopiar(){
     }).catch(err => {
         console.error('Failed to copy text: ', err);
     });
+}
+
+
+function checkValidInput(inputString){
+    if (invalidCharRegex.test(inputString)){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+function actionInvalidInput(){
+    alert('A ingresado un caracter invalido.');
 }
